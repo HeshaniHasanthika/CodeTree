@@ -24,3 +24,22 @@ class Solution {
         return true;
     }
 }
+
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+        double slope = getslope(coordinates[0], coordinates[1]);
+        for(int i=1; i<coordinates.length-1; i++)
+        {
+            double currslope = getslope(coordinates[i], coordinates[i+1]);
+            if(slope != currslope)
+                return false;
+        }
+        return true;
+    }
+    
+    public double getslope(int[] x1, int[] x2)
+    {
+        // multiply by 1.0, otherwise int by int will occur and precision is lost
+        return (x2[1]-x1[1])*1.0/(x2[0]-x1[0]);
+    }
+}
